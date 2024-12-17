@@ -100,7 +100,7 @@ frame_progress = 0.693962
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-0.5, 0.5)
