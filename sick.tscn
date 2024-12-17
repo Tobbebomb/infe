@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvkynivky7vco"]
+
+[ext_resource type="Texture2D" uid="uid://gdr4c2iyrdf3" path="res://sprite/DinoSprites - mort.png" id="1_di0lv"]
+[ext_resource type="Script" path="res://sick.gd" id="1_glj31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bepv5"]
+size = Vector2(20, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bigkj"]
+atlas = ExtResource("1_di0lv")
+region = Rect2(408, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24qvb"]
+atlas = ExtResource("1_di0lv")
+region = Rect2(432, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5tpq"]
+atlas = ExtResource("1_di0lv")
+region = Rect2(480, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pgjn"]
+atlas = ExtResource("1_di0lv")
+region = Rect2(456, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gkmv"]
+atlas = ExtResource("1_di0lv")
+region = Rect2(552, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf3ji"]
+atlas = ExtResource("1_di0lv")
+region = Rect2(528, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fwlq"]
+atlas = ExtResource("1_di0lv")
+region = Rect2(504, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wm00y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bigkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24qvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5tpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pgjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gkmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf3ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fwlq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3w4o"]
+radius = 41.0122
+
+[node name="sick" type="CharacterBody2D" groups=["sick"]]
+script = ExtResource("1_glj31")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_bepv5")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3, 0)
+sprite_frames = SubResource("SpriteFrames_wm00y")
+autoplay = "default"
+frame_progress = 0.652829
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="infektion radius" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j3w4o")
+
+[node name="Timer2" type="Timer" parent="."]
+process_callback = 0
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="Area2D/infektion radius" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

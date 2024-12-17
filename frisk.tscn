@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://dg46t4lfcuru6"]
+
+[ext_resource type="Script" path="res://frisk.gd" id="1_qeyf8"]
+[ext_resource type="Texture2D" uid="uid://4to4udrggx45" path="res://sprite/DinoSprites - vita.png" id="2_xhcna"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0n5n"]
+size = Vector2(17, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2p6"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyfcw"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1klk"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iygww"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yguud"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27lmc"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3eww"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hfvq"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p3dw"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7k3b"]
+atlas = ExtResource("2_xhcna")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcriw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyfcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1klk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iygww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yguud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27lmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3eww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hfvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p3dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7k3b")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="frisk" type="CharacterBody2D" groups=["fisk"]]
+script = ExtResource("1_qeyf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_i0n5n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_pcriw")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.693962
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.5, 0.5)
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

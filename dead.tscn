@@ -1,0 +1,147 @@
+[gd_scene load_steps=22 format=3 uid="uid://dn5716lj105aa"]
+
+[ext_resource type="Texture2D" uid="uid://b5sptoy0akqxq" path="res://sprite/DinoSprites - doux.png" id="1_rpwmh"]
+[ext_resource type="Script" path="res://dead.gd" id="1_xqge3"]
+[ext_resource type="Texture2D" uid="uid://cod2c1t5gd7cg" path="res://sprite/explosion-1-g/spritesheet.png" id="2_lc20r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p6gg"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl3gi"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk5g0"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anj4c"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfv6j"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(264, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twwel"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(288, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaiqg"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(336, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrmmj"]
+atlas = ExtResource("1_rpwmh")
+region = Rect2(360, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ceocy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p6gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl3gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk5g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anj4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfv6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twwel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaiqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrmmj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2itad"]
+size = Vector2(17, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf88q"]
+atlas = ExtResource("2_lc20r")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxe1p"]
+atlas = ExtResource("2_lc20r")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uqef"]
+atlas = ExtResource("2_lc20r")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjmqs"]
+atlas = ExtResource("2_lc20r")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urn6f"]
+atlas = ExtResource("2_lc20r")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqepj"]
+atlas = ExtResource("2_lc20r")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvg4f"]
+atlas = ExtResource("2_lc20r")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olsbi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf88q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxe1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uqef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjmqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urn6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqepj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvg4f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dead" type="CharacterBody2D" groups=["dead"]]
+script = ExtResource("1_xqge3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ceocy")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_2itad")
+disabled = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_olsbi")
+autoplay = "default"
